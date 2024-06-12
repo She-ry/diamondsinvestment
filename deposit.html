@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit Money</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px;
+        }
+        .container h1 {
+            color: #333;
+        }
+        .instructions {
+            text-align: left;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .submit-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background-color: #218838;
+        }
+        .link {
+            display: block;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Deposit Money</h1>
+    <div class="instructions">
+        <h2>How to Deposit Money via M-PESA</h2>
+        <ol>
+            <li>Go to the M-PESA menu on your phone.</li>
+            <li>Select "Lipa na M-PESA".</li>
+            <li>Select "Buy Goods and Services".</li>
+            <li>Enter the till number <strong>12333</strong>.</li>
+            <li>Enter the amount you wish to deposit.</li>
+            <li>Enter your M-PESA PIN and confirm the transaction.</li>
+            <li>Wait for the confirmation SMS from M-PESA.</li>
+        </ol>
+    </div>
+    <form id="depositForm">
+        <div class="form-group">
+            <label for="depositAmount">Amount Deposited</label>
+            <input type="number" id="depositAmount" name="depositAmount" required>
+        </div>
+        <button type="submit" class="submit-button">Confirm Deposit</button>
+    </form>
+    <a href="index.html" class="link">Back to Home</a>
+</div>
+
+<script>
+    document.getElementById('depositForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        alert('Deposit confirmed! Thank you.');
+        window.location.href = 'index.html';
+    });
+</script>
+
+</body>
+</html>
+
