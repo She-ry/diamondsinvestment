@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Owner Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .container h1 {
+            color: #333;
+        }
+        .balance {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+        .last-updated {
+            color: #777;
+        }
+        .link {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Profile</h1>
+    <p>Account Owner: John Doe</p>
+    <div class="balance" id="balance">$0.00</div>
+    <div class="last-updated" id="lastUpdated">Last updated: N/A</div>
+    <a href="index.html" class="link">Home</a>
+    <a href="logout.html" class="link">Log Out</a>
+</div>
+
+<script>
+    const balanceElement = document.getElementById('balance');
+    const lastUpdatedElement = document.getElementById('lastUpdated');
+
+    // Fetch the current balance from the server
+    async function fetchBalance() {
+        const response = await fetch('/balance');
+        const data = await response.json();
+        balanceElement.textContent = `$${data.balance.toFixed(2)}`;
+        lastUpdatedElement.textContent = `Last updated: ${new Date(data.lastUpdated).toLocaleString()}`;
+    }
+
+    // Fetch the initial balance on page load
+    fetchBalance();
+
+    // Function to update balance on the page every 24 hours
+    setInterval(fetchBalance, 24 * 60 * 60 * 1000);
+</script>
+
+</body>
+</html>
+
+
+
+
